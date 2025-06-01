@@ -40,15 +40,31 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     });
 });
 
-// Form submission handler
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Here you would typically handle the form submission
-        // For now, we'll just show an alert
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
-}
+
+    // Close menu when clicking a link
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('nav')) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+});
 
