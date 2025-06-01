@@ -460,7 +460,7 @@ footer {
 
 
 /* Responsive Design for Resume Page */
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     .resume-hero-content {
         flex-direction: column;
         text-align: center;
@@ -486,7 +486,7 @@ footer {
     .resume-hero p {
         font-size: 1.2rem;
     }
-} */
+}
 
 .resume-content {
     max-width: 1200px;
