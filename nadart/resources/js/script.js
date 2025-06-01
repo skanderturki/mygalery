@@ -40,31 +40,52 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+// Debug log to confirm script loading
+console.log('Navigation script loaded');
 
-    // Toggle menu
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+// Wrap all navigation-related code in a try-catch block
+try {
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM Content Loaded');
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
 
-    // Close menu when clicking a link
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+        if (!hamburger || !navLinks) {
+            console.error('Navigation elements not found');
+            return;
+        }
+
+        console.log('Navigation elements found');
+
+        // Toggle menu
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            console.log('Hamburger clicked');
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Nav link clicked');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav')) {
+                console.log('Clicked outside nav');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('nav')) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
-});
+} catch (error) {
+    console.error('Error in navigation script:', error);
+}
 
