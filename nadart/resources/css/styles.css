@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Dancing+Script:wght@400..700&display=swap');
 /* Reset and base styles */
 * {
     margin: 0;
@@ -10,17 +10,16 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #E0E0E0;
-    background-color: #121212;
+    color: #f0f0f0;
+    background-color: #000000;
     position: relative;
 }
 
 /* Header and Navigation */
 header {
-    background-color: #1F1F1F;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background-color: transparent;
     width: 100%;
     position: fixed;
     top: 0;
@@ -29,42 +28,33 @@ header {
 }
 
 .dancing-script {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
     font-weight: 700;
-    font-size: 24px !important;
-    letter-spacing: 1px;
-}
+    font-style: normal;
+    font-size: 50px !important;
+  }
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 1rem 5%;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 1.5rem;
     position: relative;
 }
 
-.nav-left {
-    display: flex;
-    min-width: 50%;
-}
-
-nav .icon {
-    width: 100%;
-    max-width: 70px;
-}
-
 .hamburger {
-    display: none;
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     width: 30px;
     height: 24px;
-    position: relative;
-    z-index: 10000;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10001;
 }
 
 .hamburger span {
@@ -92,11 +82,17 @@ main {
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
-    margin: 0 2rem;
-    position: relative;
     z-index: 10000;
 }
 
@@ -169,45 +165,23 @@ main {
     font-size: 1.1rem;
 }
 
+.nav-links.active {
+    display: flex;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.95);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: right 0.3s ease;
-        margin: 0;
-        padding: 2rem;
-    }
-
-    .nav-links.active {
-        display: flex;
-        right: 0;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-    }
-
     .nav-links a {
         font-size: 1.5rem;
     }
@@ -215,24 +189,16 @@ main {
 
 /* Hero Section */
 .hero {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    height: 100vh;
+    background-image: url('../images/textured acrylic - 120x75cm black snow.jpg');
     background-size: cover;
     background-position: center;
-    color: white;
 }
 
 .hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero p {
@@ -246,7 +212,7 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #121212;
+    background-color: #000000;
     padding-top: 70px;
 
 }
@@ -254,10 +220,8 @@ main {
 .gallery h2 {
     text-align: center;
     margin-bottom: 3rem;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    color: #FFFFFF;
-    letter-spacing: 1px;
+    font-size: 2.5rem;
+    color: #f0f0f0;
 }
 
 .gallery-grid {
@@ -269,16 +233,15 @@ main {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
     page-break-inside: avoid;
-    background-color: #1F1F1F;
+    background-color: #000000;
 }
 
 .gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .gallery-item img {
@@ -290,30 +253,26 @@ main {
 }
 
 .artwork-info {
-    padding: 1.5rem;
-    background-color: transparent;
-    color: #E0E0E0;
+    padding: 1rem;
+    text-align: center;
 }
 
 .artwork-info h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #FFFFFF;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+    color: #ffffff;
 }
 
 .artwork-info p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #BDBDBD;
+    font-size: 0.8rem;
+    color: #aaaaaa;
 }
 
 /* About Section */
 .about {
     padding: 5rem 1rem;
-    background-color: #1F1F1F;
+    background-color: #000000;
     margin-top: -70px;
     padding-top: 70px;
     position: relative;
@@ -329,16 +288,14 @@ main {
 .about h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    color: #FFFFFF;
-    letter-spacing: 1px;
+    font-size: 2.5rem;
+    color: #f0f0f0;
 }
 
 /* Contact Section */
 .contact {
     padding: 5rem 1rem;
-    background-color: #121212;
+    background-color: #000000;
     margin-top: -70px;
     padding-top: 70px;
     position: relative;
@@ -354,10 +311,8 @@ main {
 .contact h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    color: #FFFFFF;
-    letter-spacing: 1px;
+    font-size: 2.5rem;
+    color: #f0f0f0;
 }
 
 .social-links {
@@ -381,20 +336,19 @@ main {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #E0E0E0;
+    color: #f0f0f0;
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    background-color: transparent;
-    border: 1px solid #333;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    background-color: #444;
     border-radius: 4px;
     transition: all 0.3s ease;
     margin-top: 1rem;
 }
 
 .email-link:hover {
-    background-color: #1F1F1F;
-    border-color: #BB86FC;
+    background-color: #555;
+    transform: translateY(-2px);
 }
 
 .email-link i {
@@ -424,20 +378,12 @@ main {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 1rem;
-    border: 1px solid #333;
+    padding: 0.8rem;
+    border: 1px solid #444;
     border-radius: 4px;
     font-size: 1rem;
-    background-color: #1F1F1F;
-    color: #E0E0E0;
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #BB86FC;
     background-color: #2a2a2a;
+    color: #f0f0f0;
 }
 
 .contact-form textarea {
@@ -447,24 +393,17 @@ main {
 
 .contact-form button {
     padding: 1rem 2rem;
-    background-color: #BB86FC;
-    color: #121212;
+    background-color: #444;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 1.25px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: #a76be9;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-    transform: translateY(-2px);
+    background-color: #555;
 }
 
 
@@ -472,7 +411,7 @@ main {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: #2a2a2a;
+    background-color: #000000;
     color: #f0f0f0;
 }
 
