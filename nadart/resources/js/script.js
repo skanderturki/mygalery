@@ -84,6 +84,54 @@ try {
                 navLinks.classList.remove('active');
             }
         });
+
+        const contactForm = document.querySelector('.contact-form');
+        const contactStatus = document.querySelector('.contact-status');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async event => {
+                event.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const payload = {
+                    email: formData.get('email') || '',
+                    msg: formData.get('msg') || ''
+                };
+
+                if (contactStatus) {
+                    contactStatus.textContent = 'Sending your message...';
+                    contactStatus.classList.remove('contact-status--success', 'contact-status--error');
+                }
+
+                try {
+                    const response = await fetch('https://n8n.skasystems.com/webhook/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Basic ${btoa('nadart:barnouss56')}`
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Request failed with status ${response.status}`);
+                    }
+
+                    if (contactStatus) {
+                        contactStatus.textContent = 'Thank you! Your message has been sent.';
+                        contactStatus.classList.add('contact-status--success');
+                    }
+
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error sending contact form:', error);
+                    if (contactStatus) {
+                        contactStatus.textContent = 'Sorry, something went wrong. Please try again later.';
+                        contactStatus.classList.add('contact-status--error');
+                    }
+                }
+            });
+        }
     });
 } catch (error) {
     console.error('Error in navigation script:', error);
