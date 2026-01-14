@@ -13,14 +13,13 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #f0f0f0;
-    background-color: #1a1a1a;
+    background-color: #000000;
     position: relative;
 }
 
 /* Header and Navigation */
 header {
-    background-color: #000000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    background-color: transparent;
     width: 100%;
     position: fixed;
     top: 0;
@@ -33,39 +32,29 @@ header {
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 50px !important; 
+    font-size: 50px !important;
   }
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 1rem 5%;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 1.5rem;
     position: relative;
 }
 
-.nav-left {
-    display: flex;
-    min-width: 50%;
-}
-
-nav .icon {
-    width: 100%;
-    max-width: 70px;
-}
-
 .hamburger {
-    display: none;
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     width: 30px;
     height: 24px;
-    position: relative;
-    z-index: 10000;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10001;
 }
 
 .hamburger span {
@@ -93,11 +82,17 @@ main {
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
-    margin: 0 2rem;
-    position: relative;
     z-index: 10000;
 }
 
@@ -170,45 +165,23 @@ main {
     font-size: 1.1rem;
 }
 
+.nav-links.active {
+    display: flex;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.95);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: right 0.3s ease;
-        margin: 0;
-        padding: 2rem;
-    }
-
-    .nav-links.active {
-        display: flex;
-        right: 0;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-    }
-
     .nav-links a {
         font-size: 1.5rem;
     }
@@ -216,16 +189,10 @@ main {
 
 /* Hero Section */
 .hero {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    height: 100vh;
+    background-image: url('../images/textured acrylic - 120x75cm black snow.jpg');
     background-size: cover;
     background-position: center;
-    color: white;
 }
 
 .hero h1 {
@@ -245,7 +212,7 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding-top: 70px;
 
 }
@@ -267,14 +234,14 @@ main {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
     page-break-inside: avoid;
-    background-color: #2a2a2a;
+    background-color: #000000;
 }
 
 .gallery-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .gallery-item img {
@@ -287,26 +254,25 @@ main {
 
 .artwork-info {
     padding: 1rem;
-    background-color: rgba(42, 42, 42, 0.95);
-    color: #f0f0f0;
+    text-align: center;
 }
 
 .artwork-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 0.25rem;
     color: #ffffff;
 }
 
 .artwork-info p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: #cccccc;
+    font-size: 0.8rem;
+    color: #aaaaaa;
 }
 
 /* About Section */
 .about {
     padding: 5rem 1rem;
-    background-color: #2a2a2a;
+    background-color: #000000;
     margin-top: -70px;
     padding-top: 70px;
     position: relative;
@@ -329,7 +295,7 @@ main {
 /* Contact Section */
 .contact {
     padding: 5rem 1rem;
-    background-color: #1a1a1a;
+    background-color: #000000;
     margin-top: -70px;
     padding-top: 70px;
     position: relative;
@@ -445,7 +411,7 @@ main {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: #2a2a2a;
+    background-color: #000000;
     color: #f0f0f0;
 }
 
